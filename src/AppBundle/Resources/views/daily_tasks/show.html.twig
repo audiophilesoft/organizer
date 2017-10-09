@@ -1,0 +1,17 @@
+{% extends '@App/task_abstract/show.html.twig' %}
+{% set fields = ['weekday', 'time', 'length'] %}
+{% set title = 'daily_tasks.show.title'|trans %}
+
+{% block values %}
+    {{ parent() }}
+    {% for field in fields %}
+        <tr>
+            <th>{{ ('field.'~field)|trans }}</th>
+            {% if (field in ['time', 'length']) %}
+                <td>{{ attribute(task, field) ? attribute(task, field)|date("H:i") : '' }}</td>
+            {% else %}
+                <td>{{ attribute(task, field) }}</td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+{% endblock %}

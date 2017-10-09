@@ -1,0 +1,21 @@
+{% extends '@App/default/layout.html.twig' %}
+
+{% block primary %}
+    <h1>{{ title }}</h1>
+
+    {{ form_start(edit_form, {'attr': {'class': 'new_edit_form'}}) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="{{ 'default.edit.save'|trans }}" />
+    {{ form_end(edit_form) }}
+
+    <section class="show_edit_actions">
+        <div>
+            <a href="{{ path('tasks_index', {'prefix': app.request.get('prefix')}) }}">{{ 'default.edit.back'|trans }}</a>
+        </div>
+        <div>
+            {{ form_start(delete_form, {'attr': {'class': 'delete_form'}}) }}
+            {{ form_widget(delete_form.delete, { 'label': 'default.edit.delete'|trans}) }}
+            {{ form_end(delete_form) }}
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.getLocale()|slice(0,2) }}">
+<head>
+    <meta charset="UTF-8">
+    {% block stylesheets %}
+        <link rel="StyleSheet" href="{{ asset('css/my.css') }}">
+    {% endblock %}
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('js/global.js') }}"></script>
+    {% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+
+</head>
+<body>
+{% block body %}
+{% endblock %}
+
+{% block change_bg %}
+{% endblock %}
+
+</body>
+</html>

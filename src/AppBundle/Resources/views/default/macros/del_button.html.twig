@@ -1,0 +1,9 @@
+{% macro del_button(delete_forms, entity, mapper, label) %}
+    {% set index = mapper.getPrefix(entity) ~ entity.id %}
+    {% set id = index ~ 'form' %}
+
+    {{ form_start(delete_forms[index],
+    {'attr': {'id': id, 'class': 'delete_form', 'title': 'delete_button.title'|trans}}) }}
+    {{ form_widget(delete_forms[index].delete, { 'label': label, 'id': index~'button' }) }}
+    {{ form_end(delete_forms[index]) }}
+{% endmacro %}

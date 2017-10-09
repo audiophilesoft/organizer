@@ -1,0 +1,11 @@
+{% extends '@App/default/tasks/show.html.twig' %}
+{% set base_fields = ['title', 'details'] %}
+{% set title = 'ponder.show.title'|trans %}
+
+{% block values %}
+{{ parent() }}
+<tr>
+    <th>{{ 'field.show'|trans }}</th>
+    <td>{{ task.show ? 'field.any.value.yes'|trans : 'field.any.value.no'|trans }}</td>
+</tr>
+{% endblock %}

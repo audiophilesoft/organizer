@@ -1,0 +1,176 @@
+page_selector:
+  show_day: 'For the day'
+  upcoming: 'Upcoming'
+  daily: 'Daily'
+  todo: 'Todo'
+  events: 'Events'
+  periodical: 'Periodical'
+  until: 'Until'
+  ponder: 'Ponder'
+
+delete_button:
+  title: 'Delete'
+
+show_day:
+  day: 'Date'
+  show_day: 'Show'
+  timetable:
+    title: 'Timetable'
+    start: 'Start'
+    task: 'Task'
+    length: 'Length'
+  other_tasks:
+    title: 'Todo'
+    name: 'Name'
+    length: 'Length'
+  actions:
+    delete:
+      anchor: '[d]'
+    edit:
+      anchor: '[e]'
+      title: 'Edit'
+    show:
+      anchor: '[s]'
+      title: 'Show'
+
+default:
+  background_change: 'Change background'
+  index:
+    create: 'Create a new entry'
+    actions:
+      show: 'Show'
+      edit: 'Edit'
+      delete: 'Delete'
+  edit:
+    save: 'Save'
+    delete: 'Delete'
+    back: 'Back to the list'
+  new:
+    create: 'Create'
+    back: 'Back to the list'
+  show:
+    edit: 'Edit'
+    delete: 'Delete'
+    back: 'Back to the list'
+
+notes:
+  note: 'Note'
+  until_the_weekend:
+    title: 'Until the weekend'
+  expiring:
+    title: 'In process'
+    task: 'Task'
+    deadline: 'Deadline'
+  ponder:
+    title: 'Ponder'
+    hide: 'hide'
+
+upcoming:
+  set_period: 'Set period'
+  start: 'Start'
+  end: 'End'
+  show_period: 'Show the period'
+  date: 'Date'
+  task: 'Task'
+  length: 'Length'
+
+
+done_marker:
+  mark_as: 'mark as'
+  done: 'done'
+  undone: 'undone'
+
+field:
+  id: 'ID'
+  name: 'Name'
+  title: 'Title'
+  date: 'Date'
+  datetime: 'Date/time'
+  done: 'Done'
+  description: 'Description'
+  details: 'Details'
+  length: 'Length'
+  lastdone: 'Last done'
+  deadline: 'Deadline'
+  period: 'Period'
+  show: 'Show'
+  priority: 'Priority'
+  weekday: 'Weekday'
+  time: 'Time'
+  any:
+    value:
+      yes: 'Yes'
+      no: 'No'
+
+weekday:
+  all: 'all'
+  Monday: 'Monday'
+  Tuesday: 'Tuesday'
+  Wednesday: 'Wednesday'
+  Thursday: 'Thursday'
+  Friday: 'Friday'
+  Saturday: 'Saturday'
+  Sunday: 'Sunday'
+  workday: 'workday'
+  day_off: 'day off'
+
+
+daily_tasks:
+  index:
+    title: 'Daily tasks list'
+  edit:
+    title: 'Edit daily task'
+  new:
+    title: 'Add daily task'
+  show:
+    title: 'Daily task'
+
+todo:
+  index:
+    title: 'Todo list'
+  edit:
+    title: 'Edit todo'
+  new:
+    title: 'Add todo'
+  show:
+    title: 'Todo'
+
+events:
+  index:
+    title: 'Events list'
+  edit:
+    title: 'Edit event'
+  new:
+    title: 'Add new event'
+  show:
+    title: 'Event'
+
+periodical:
+  index:
+    title: 'Periodicals list'
+  edit:
+    title: 'Edit periodical'
+  new:
+    title: 'Add periodical'
+  show:
+    title: 'Periodical task'
+
+ponder:
+  index:
+    title: 'Ponders list'
+  edit:
+    title: 'Edit ponder'
+  new:
+    title: 'Add ponder'
+  show:
+    title: 'Ponder'
+
+until:
+  index:
+    title: 'Until list'
+  edit:
+    title: 'Edit until'
+  new:
+    title: 'Add until'
+  show:
+    title: 'Until'

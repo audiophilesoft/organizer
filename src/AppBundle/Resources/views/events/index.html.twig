@@ -1,0 +1,12 @@
+{% extends '@App/task_abstract/index.html.twig' %}
+{% set title = 'events.index.title'|trans %}
+{% set fields = ['datetime', 'length', 'done'] %}
+{% set sort_field = 'datetime' %}
+
+
+{% block values %}
+    {{ parent() }}
+    <td>{{ task.datetime ?? '' ? task.datetime|date("d-m-Y H:i") : '' }}</td>
+    <td>{{ task.length ?? '' ? task.length|date("H:i") : '' }}</td>
+    <td>{{ task.done ? 'field.any.value.yes'|trans : 'field.any.value.no'|trans  }}</td>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends '@App/task_abstract/index.html.twig' %}
+{% set title = 'daily_tasks.index.title'|trans %}
+{% set fields = ['weekday', 'time', 'length'] %}
+{% set sort_field = 'time' %}
+
+
+{% block values %}
+    {{ parent() }}
+    <td>{{ ('weekday.'~task.weekday)|trans }}</td>
+    <td>{{ task.time ?? '' ? task.time|date("H:i") : '' }}</td>
+    <td>{{ task.length ?? '' ? task.length|date("H:i") : '' }}</td>
+{% endblock %}

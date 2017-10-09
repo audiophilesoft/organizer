@@ -1,0 +1,43 @@
+{% extends '@App/default/base.html.twig' %}
+
+{% block title %}
+    Тайм-менеджер{{ ': ' ~ title }}
+{% endblock %}
+
+{% block body %}
+    {% block page_selector %}
+        <nav class="page_selector">
+            {% for anchor, path in {'page_selector.show_day' :'/', 'page_selector.upcoming': '/upcoming',
+            'page_selector.daily': '/daily_tasks/', 'page_selector.todo' : '/todo/', 'page_selector.events': '/events/',
+            'page_selector.periodical': '/periodical/', 'page_selector.until': '/until/', 'page_selector.ponder': '/ponder/'} %}
+                <a href="{{ path }}"
+                   class="
+                   {% if path is same as('/') %}
+                        {{ path is same as(app.request.pathInfo) ? "button button_current" : "button" }}
+                   {% else %}
+                        {{ path in app.request.pathInfo ? "button button_current" : "button" }}
+                   {% endif %}
+
+                ">{{ anchor|trans }}</a>
+            {% endfor %}
+        </nav>
+    {% endblock %}
+
+    <table class="sides_separator">
+        <tr>
+            <td>
+                <section class="left">
+                    {% block primary %}{% endblock %}
+                </section>
+            </td>
+
+            <td>
+                <aside class="right">
+                    {% block notes %}
+                        {{ render(controller('AppBundle:Default:loadNotes')) }}
+                    {% endblock %}
+                </aside>
+            </td>
+        </tr>
+    </table>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends '@App/default/layout.html.twig' %}
+
+
+{% block primary %}
+    <h1>{{ title }}</h1>
+
+    <table class="table">
+        <tbody>
+        {% block values %}
+            {% for field in base_fields %}
+                <tr>
+                    <th>{{ ('field.'~field)|trans }}</th>
+                    <td>{{ attribute(task, field) }}</td>
+                </tr>
+            {% endfor %}
+        {% endblock %}
+        </tbody>
+    </table>
+
+    <section class="show_edit_actions">
+        <div>
+            <a class="crud_link"
+               href="{{ path('tasks_index', {'prefix': app.request.get('prefix')}) }}">{{ 'default.show.back'|trans }}</a>
+        </div>
+        <div>
+            <a class="crud_link"
+               href="{{ path('task_edit', {'prefix': app.request.get('prefix'), 'id': task.id }) }}">{{ 'default.show.edit'|trans }}</a>
+        </div>
+        <div>
+            {{ form_start(delete_form, {'attr': {'class': 'delete_form'}}) }}
+            {{ form_widget(delete_form.delete, { 'label': 'default.show.delete'|trans}) }}
+            {{ form_end(delete_form) }}
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends '@App/task_abstract/show.html.twig' %}
+{% set fields = ['lastdone', 'period'] %}
+{% set title = 'periodical.show.title'|trans %}
+
+{% block values %}
+    {{ parent() }}
+    <tr>
+        <th>{{ 'field.lastdone'|trans }}</th>
+        <td>{{ task.lastdone|date("d-m-Y") }}</td>
+    </tr>
+    <tr>
+        <th>{{ 'field.period'|trans }}</th>
+        <td>{{ task.period }}</td>
+    </tr>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends '@App/default/layout.html.twig' %}
+
+
+
+{% block title %}Тайм-менеджмент: ближайшие{% endblock %}
+
+    {% block primary %}
+        <div class="period_selector">
+            <form action="/upcoming" class="form-inline">
+                <input title="{{ 'upcoming.start'|trans }}" name="start" type="date" value="{{ start_date|date('Y-m-d') }}"/> —
+                <input title="{{ 'upcoming.end'|trans }}" name="end" type="date" value="{{ end_date|date('Y-m-d') }}"/>
+                <input type="submit" value="{{ 'upcoming.show_period'|trans }}"/>
+            </form>
+        </div>
+
+        <div id="periodical_tasks">
+
+            <h3>{{ start_date|localizeddate('none', 'none', app.request.locale, null, 'dd MMMM YYYY') }}
+                — {{ end_date|localizeddate('none', 'none', app.request.locale, null, 'dd MMMM YYYY') }}</h3>
+
+            <table class="table table-striped timetable">
+                <tr>
+                    <th>{{ 'upcoming.date'|trans }}</th>
+                    <th>{{ 'upcoming.task'|trans }}</th>
+                    <th>{{ 'upcoming.length'|trans }}</th>
+                </tr>
+                {% for task in tasks %}
+                    <tr>
+                        <td>
+                            {% if task.datetime is defined %}
+                                {{ task.datetime|localizeddate('none', 'none', app.request.locale, null, 'EEEE, dd MMMM, HH:mm')|capitalize }}
+                            {% else %}
+                                {{ task.date|localizeddate('none', 'none', app.request.locale, null, 'EEEE, dd MMMM')|capitalize }}
+                            {% endif %}
+                        </td>
+                        <td>{{ task.name }}</td>
+                        <td>{{ task.length ?? '' ? task.length|date("H:i") : '' }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% endblock %}

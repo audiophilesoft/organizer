@@ -1,0 +1,103 @@
+{% extends '@App/default/layout.html.twig' %}
+{% set title =  date|localizeddate('none', 'none', app.request.locale, null, 'EEEE, dd MMMM yyyy')|capitalize %}
+{% import '@App/default/macros/del_button.html.twig' as mac %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/bg_updater.js') }}"></script>
+{% endblock %}
+
+{% block primary %}
+
+    <h2>{{ title }}</h2>
+
+    <div class="date_selector">
+        <form action="" class="form-inline">
+            <input title="{{ 'show_day.day'|trans }}" name="day" type="date" value="{{ date|date("Y-m-d") }}"/>
+            <input type="submit" value="{{ 'show_day.show_day'|trans }}"/>
+        </form>
+    </div>
+
+    <h3>{{ 'show_day.timetable.title'|trans }}</h3>
+    <table id="timetable" class="table">
+        <thead>
+        <tr>
+            <th>{{ 'show_day.timetable.start'|trans }}</th>
+            <th>{{ 'show_day.timetable.task'|trans }}</th>
+            <th>{{ 'show_day.timetable.length'|trans }}</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for task in tasks|sortbyfield('FormattedTime') %}
+            <tr class="{{ task.checkDone(date) ? 'task_done' : 'task' }}">
+                <td>{{ task.getFormattedTime() }}</td>
+                <td>
+                    <div>
+                        {% block task_name %}
+                            <span class='task_name'
+                                    {% if task.description %}
+                                onclick="expandDescription('{% block descr_id %}{{ 'descr_' ~ mapper.getPrefix(task) ~ task.id }}{% endblock %}')"
+                                style="cursor: pointer"
+                                    {% endif %}>
+                                    {{ task.name }}
+                            </span>
+                        {% endblock %}
+                        {% block done_marker %}
+                            {% include '@App/default/inc/done_marker.twig' %}
+                        {% endblock %}
+                    </div>
+                    <div class='task_description' id="{{ block('descr_id') }}">{{ task.description }}</div>
+                </td>
+                <td>
+                    {{ task.length ?? '' ? task.length|date("H:i") : '' }}
+                </td>
+                <td>
+                    {% block actions %}
+                        <div class="actions">
+                            <div>
+                                <a href="{{ path('task_show', {'prefix': mapper.getPrefix(task), 'id': task.id }) }}"
+                                   title="{{ 'show_day.actions.show.title'|trans }}">{{ 'show_day.actions.show.anchor'|trans }}</a>
+                                <a href="{{ path('task_edit', {'prefix': mapper.getPrefix(task), 'id': task.id }) }}"
+                                   title="{{ 'show_day.actions.edit.title'|trans }}">{{ 'show_day.actions.edit.anchor'|trans }}</a>
+                                {{ mac.del_button(delete_forms, task, mapper, 'show_day.actions.delete.anchor') }}
+                            </div>
+                        </div>
+                    {% endblock %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h3>{{ 'show_day.other_tasks.title'|trans }}</h3>
+    <table id="todo" class="table">
+        <thead>
+            <tr>
+                <th>{{ 'show_day.other_tasks.name'|trans }}</th>
+                <th>{{ 'show_day.other_tasks.length'|trans }}</th>
+                <th></th>
+            </tr>
+        </thead>
+        {% for task in todo|sortbyfield('priority') %}
+            <tr class="{{ task.checkDone(date) ? 'task_done' : 'task' }}">
+                <td>
+                    <div>
+                        {{ block('task_name') }}
+                        {{ block('done_marker') }}
+                    </div>
+                    <div class='task_description' id='{{ block('descr_id') }}'>{{ task.description }}</div>
+                </td>
+                <td>{{ task.length ?? '' ? task.length|date("H:i") : '' }}</td>
+                <td>
+                    {{ block('actions') }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+{% block change_bg %}
+    <a href="javascript:void(0)" onclick="checkBackground(true)"
+       id="change_bg">{{ 'default.background_change'|trans }} </a>
+{% endblock %}

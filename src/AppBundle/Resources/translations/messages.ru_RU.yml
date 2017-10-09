@@ -1,0 +1,176 @@
+page_selector:
+  show_day: 'На день'
+  upcoming: 'Ближайшие'
+  daily: 'Ежедневные'
+  todo: 'Сделать'
+  events: 'События'
+  periodical: 'Периодические'
+  until: 'До даты'
+  ponder: 'Обдумать'
+
+delete_button:
+  title: 'Удалить'
+
+show_day:
+  day: 'День'
+  show_day: 'Показать'
+  timetable:
+    title: 'Расписание'
+    start: 'Начало'
+    task: 'Дело'
+    length: 'Продолжительность'
+  other_tasks:
+    title: 'Дела'
+    name: 'Название'
+    length: 'Продолжительность'
+  actions:
+    delete:
+      anchor: '[уд]'
+    edit:
+      anchor: '[изм]'
+      title: 'Изменить'
+    show:
+      anchor: '[см]'
+      title: 'Посмотреть'
+
+default:
+  background_change: 'Другой фон'
+  index:
+    create: 'Создать новый элемент'
+    actions:
+      show: 'Показать'
+      edit: 'Изменить'
+      delete: 'Удалить'
+  edit:
+    save: 'Сохранить'
+    delete: 'Удалить'
+    back: 'Назад к списку'
+  new:
+    create: 'Создать'
+    back: 'Назад к списку'
+  show:
+    edit: 'Изменить'
+    delete: 'Удалить'
+    back: 'Назад к списку'
+
+notes:
+  note: 'Важно'
+  until_the_weekend:
+    title: 'До конца недели'
+  expiring:
+    title: 'В процессе'
+    task: 'Задача'
+    deadline: 'Срок'
+  ponder:
+    title: 'Обдумать'
+    hide: 'скрыть'
+
+upcoming:
+  set_period: 'Задать период'
+  start: 'Начало'
+  end: 'Конец'
+  show_period: 'Показать'
+  date: 'Дата'
+  task: 'Дело'
+  length: 'Продолжительность'
+
+
+done_marker:
+  mark_as: 'пометить'
+  done: 'выполненным'
+  undone: 'невыполненным'
+
+field:
+  id: 'ID'
+  name: 'Название'
+  title: 'Заголовок'
+  date: 'Дата'
+  datetime: 'Дата/время'
+  done: 'Сделано'
+  description: 'Описание'
+  details: 'Подробности'
+  length: 'Продолжительность'
+  lastdone: 'Посл. раз выполнено'
+  deadline: 'Срок'
+  period: 'Периодичность'
+  show: 'Показывать'
+  priority: 'Приоритет'
+  weekday: 'День недели'
+  time: 'Время'
+  any:
+    value:
+      yes: 'Да'
+      no: 'Нет'
+
+weekday:
+  all: 'Все'
+  Monday: 'Понедельник'
+  Tuesday: 'Вторник'
+  Wednesday: 'Среда'
+  Thursday: 'Четверг'
+  Friday: 'Пятница'
+  Saturday: 'Суббота'
+  Sunday: 'Воскресенье'
+  workday: 'Рабочие дни'
+  day_off: 'Выходные'
+
+
+daily_tasks:
+  index:
+    title: 'Список ежедневных дел'
+  edit:
+    title: 'Изменить ежедневную задачу'
+  new:
+    title: 'Добавить ежедневную задачу'
+  show:
+    title: 'Ежедневная задача'
+
+todo:
+  index:
+    title: 'Список задач'
+  edit:
+    title: 'Изменить задачу'
+  new:
+    title: 'Добавить задачу'
+  show:
+    title: 'Задача'
+
+events:
+  index:
+    title: 'Список событий и встреч'
+  edit:
+    title: 'Изменить событие'
+  new:
+    title: 'Добавить событие'
+  show:
+    title: 'Событие'
+
+periodical:
+  index:
+    title: 'Список периодических задач'
+  edit:
+    title: 'Изменить периодическую задачу'
+  new:
+    title: 'Добавить периодическую задачу'
+  show:
+    title: 'Периодическая задача'
+
+ponder:
+  index:
+    title: 'Списокк заметок к размышлению'
+  edit:
+    title: 'Изменить заметку'
+  new:
+    title: 'Добавить заметку'
+  show:
+    title: 'Заметка'
+
+until:
+  index:
+    title: 'Список задач с граничным сроком'
+  edit:
+    title: 'Изменить задачу со сроком'
+  new:
+    title: 'Добавить задачу со сроком'
+  show:
+    title: 'Задача с граничным сроком'

@@ -1,0 +1,11 @@
+{% extends '@App/task_abstract/index.html.twig' %}
+{% set title = 'until.index.title'|trans %}
+{% set fields = ['deadline', 'done'] %}
+{% set sort_field = 'deadline' %}
+
+
+{% block values %}
+    {{ parent() }}
+    <td>{{ task.deadline ?? '' ? task.deadline|date("d-m-Y") : '' }}</td>
+    <td>{{ task.done ? 'field.any.value.yes'|trans : 'field.any.value.no'|trans  }}</td>
+{% endblock %}

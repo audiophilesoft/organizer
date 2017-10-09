@@ -1,0 +1,43 @@
+{% extends '@App/default/layout.html.twig' %}
+{% import '@App/default/macros/del_button.html.twig' as mac %}
+
+{% block primary %}
+    <h1>{{ title }}</h1>
+
+
+    <div class="crud_links">
+        <a href="{{ path('task_new', {'prefix': app.request.get('prefix')}) }}">{{ 'default.index.create'|trans }}</a>
+    </div>
+    <table class="table">
+        <tr>
+            {% block th %}
+                {% for field in base_fields|merge(fields) %}
+                    <th>{{ ('field.'~field)|trans }}</th>
+                {% endfor %}
+                <th></th>
+            {% endblock %}
+        </tr>
+        {% for task in tasks|sortbyfield(sort_field) %}
+            <tr>
+                {% block values %}
+                    {% for field in base_fields %}
+                        <td>{{ attribute(task, field) }}</td>
+                    {% endfor %}
+                {% endblock %}
+                <td>
+                    <ul>
+                        <li>
+                            <a class="action" href="{{ path('task_show', {'prefix': app.request.get('prefix'), 'id': task.id }) }}">{{ 'default.index.actions.show'|trans }}</a>
+                        </li>
+                        <li>
+                            <a class="action" href="{{ path('task_edit', {'prefix': app.request.get('prefix'), 'id': task.id }) }}">{{ 'default.index.actions.edit'|trans }}</a>
+                        </li>
+                        <li>
+                            {{ mac.del_button(delete_forms, task, mapper, 'default.index.actions.delete') }}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,15 @@
+services:
+#    organizer.example:
+#        class: AppBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    task_mapper:
+        class: 'AppBundle\Services\TaskMapper'
+        public: true
+
+
+
+
+    # twig.extension.sortbyfieldextension:
+    # class:        AppBundle\Twig\SortByFieldExtension
+    # tags:
+    #      - { name: 'twig.extension' }

@@ -1,0 +1,3 @@
+<span class="show_on_hover">
+    <a href="{{ path('task_switch_done', {'date': date|date('Y-m-d'), 'prefix': mapper.getPrefix(task), 'id': task.id}) }}">{{ 'done_marker.mark_as'|trans }} {{ task.checkDone(date) ? 'done_marker.undone'|trans : 'done_marker.done'|trans }}</a>
+</span>

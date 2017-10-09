@@ -1,0 +1,18 @@
+{% extends '@App/default/layout.html.twig' %}
+
+{% block primary %}
+    <h1>{{ title }}</h1>
+
+    <div>
+        {{ form_start(form, {'attr' : {'class' : 'new_edit_form'}}) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="{{ 'default.new.create'|trans }}"/>
+        {{ form_end(form) }}
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('tasks_index', {'prefix': app.request.get('prefix')}) }}">{{ 'default.new.back'|trans }}</a>
+        </li>
+    </ul>
+{% endblock %}

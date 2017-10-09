@@ -1,0 +1,19 @@
+{% extends '@App/task_abstract/show.html.twig' %}
+{% set fields = ['datetime', 'length'] %}
+{% set title = 'events.show.title'|trans %}
+
+{% block values %}
+    {{ parent() }}
+    <tr>
+        <th>{{ 'field.date'|trans }}</th>
+        <td>{{ task.datetime|date("d-m-Y H:i") }}</td>
+    </tr>
+    <tr>
+        <th>{{ 'field.length'|trans }}</th>
+        <td>{{ task.length|date("H:i") }}</td>
+    </tr>
+    <tr>
+        <th>Done</th>
+        <td>{{ task.done ? 'field.any.value.yes'|trans : 'field.any.value.no'|trans  }}</td>
+    </tr>
+{% endblock %}

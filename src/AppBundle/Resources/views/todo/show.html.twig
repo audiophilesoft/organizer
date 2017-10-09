@@ -1,0 +1,14 @@
+{% extends '@App/task_abstract/show.html.twig' %}
+{% set title = 'todo.show.title'|trans %}
+
+{% block values %}
+    {{ parent() }}
+    <tr>
+        <th>{{ 'field.date'|trans }}</th>
+        <td>{{ task.date|date("d-m-Y") }}</td>
+    </tr>
+    <tr>
+        <th>{{ 'field.done'|trans }}</th>
+        <td>{{ task.done ? 'field.any.value.yes'|trans : 'field.any.value.no'|trans  }}</td>
+    </tr>
+{% endblock %}

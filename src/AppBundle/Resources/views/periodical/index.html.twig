@@ -1,0 +1,11 @@
+{% extends '@App/task_abstract/index.html.twig' %}
+{% set title = 'periodical.index.title'|trans %}
+{% set fields = ['lastdone', 'period'] %}
+{% set sort_field = 'priority' %}
+
+
+{% block values %}
+    {{ parent() }}
+    <td>{{ task.lastdone|date("d-m-Y") }}</td>
+    <td>{{ task.period }}</td>
+{% endblock %}

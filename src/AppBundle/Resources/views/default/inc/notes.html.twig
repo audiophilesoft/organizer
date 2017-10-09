@@ -1,0 +1,80 @@
+<div class="notes_section">
+    <h2>{{ 'notes.note'|trans }}</h2>
+
+    {% if until_weekend is not empty %}
+        <h3>{{ 'notes.until_the_weekend.title'|trans }}</h3>
+
+        <table id="until_weekend" class="table">
+            {% for task in until_weekend %}
+                <tr>
+                    <td>
+                        <div>
+                            <span class="task_name"
+                                    {% if task.description %}
+                                onclick="expandDescription('{{ 'descr_' ~ mapper.getPrefix(task) ~ task.id }}')"
+                                style="cursor: pointer"
+                                    {% endif %}>
+                                    {{ task.name }}
+                            </span>
+                            {% block done_marker %}
+                                {% include '@App/default/inc/done_marker.twig' %}
+                            {% endblock %}
+                        </div>
+                        <div class='task_description'
+                             id="{{ 'descr_' ~ mapper.getPrefix(task) ~ task.id }}">{{ task.description }}</div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if expiring is not empty %}
+        <h3>{{ 'notes.expiring.title'|trans }}</h3>
+
+        <table id="expiring" class="table">
+            <thead>
+                <tr>
+                    <th>{{ 'notes.expiring.task'|trans }}</th>
+                    <th>{{ 'notes.expiring.deadline'|trans }}</th>
+                </tr>
+            </thead>
+            {% for task in expiring %}
+                <tr>
+                    <td>
+                        <div class='task_name' onclick='expandDescription(this)'>{{ task.name }}</div>
+                        {% if task.description is not null %}
+                            <div class='task_description'>{{ task.description }}</div>
+                        {% endif %}
+                    </td>
+                    <td>{{ task.deadline|localizeddate('none', 'none', app.request.locale, null, 'dd MMMM, EEEE') }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <h3>{{ 'notes.ponder.title'|trans }}</h3>
+
+    <table id="ponder" class="table">
+        {% for idea in ponder %}
+            <tr>
+                <td>
+                    <div>
+                            <span class="task_name"
+                                    {% if idea.details %}
+                                onclick="expandDescription('{% block descr_id %}{{ 'descr_' ~ mapper.getPrefix(idea) ~ idea.id }}{% endblock %}')"
+                                style="cursor: pointer"
+                                    {% endif %}>
+                                    {{ idea.title }}
+                            </span>
+                        {% block hider %}
+                            <span class="show_on_hover">
+                                <a href="{{ path('task_hide', {'prefix': mapper.getPrefix(idea), 'id': idea.id}) }}">{{ 'notes.ponder.hide'|trans }}</a>
+                            </span>
+                        {% endblock %}
+                    </div>
+                    <div class='task_description' id="{{ block('descr_id') }}">{{ idea.details }}</div>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
